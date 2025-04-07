@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disabled</Nullable>
+    <PackageId>Haochen.Kingdee.CDP</PackageId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Kingdee.CDP.WebApi.SDK">
+      <HintPath>..\..\dlls\Kingdee.CDP.WebApi.SDK.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
+
+</Project>
