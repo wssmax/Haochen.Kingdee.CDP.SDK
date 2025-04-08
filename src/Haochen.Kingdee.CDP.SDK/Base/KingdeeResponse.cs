@@ -1,4 +1,4 @@
-﻿namespace Haochen.Kingdee.CDP.SDK.Base;
+﻿namespace Haochen.Kingdee.CDP.Base;
 
 
 /// <summary>
