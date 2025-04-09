@@ -38,18 +38,6 @@ public abstract class BaseService
     }
 
     /// <summary>
-    /// 新建单据，保存
-    /// </summary>
-    /// <param name="entity"></param>
-    protected async Task<ResponseResult> SaveAsync<T>(T entity)
-    {
-        var input = JsonConvert.SerializeObject(entity, Settings);
-        var data = await Task.Run(() => _k3Client.Save(FormID, input));
-        var result = JsonConvert.DeserializeObject<KingDeeResponse>(data);
-        return result.Result;
-    }
-
-    /// <summary>
     /// 根据id或者编码
     /// </summary>
     /// <typeparam name="T"></typeparam>
@@ -64,6 +52,24 @@ public abstract class BaseService
         if (result.Result.ResponseStatus.IsSuccess)
             return result.Result.Result;
         return default;
+    }
+
+    /// <summary>
+    /// 根据单据编码查询
+    /// </summary>
+    public Task<T> ViewAsync<T>(string number)
+    {
+        var single = new SingleRequest { Number = number };
+        return ViewAsync<T>(single);
+    }
+
+    /// <summary>
+    /// 根据单据内码查询
+    /// </summary>
+    public Task<T> ViewAsync<T>(int id)
+    {
+        var single = new SingleRequest { Id = id.ToString() };
+        return ViewAsync<T>(single);
     }
 
     /// <summary>
@@ -89,6 +95,18 @@ public abstract class BaseService
     }
 
     /// <summary>
+    /// 新建单据，保存
+    /// </summary>
+    /// <param name="entity"></param>
+    protected async Task<ResponseResult> SaveAsync<T>(T entity)
+    {
+        var input = JsonConvert.SerializeObject(entity, Settings);
+        var data = await Task.Run(() => _k3Client.Save(FormID, input));
+        var result = JsonConvert.DeserializeObject<KingDeeResponse>(data);
+        return result.Result;
+    }
+
+    /// <summary>
     /// 删除单据
     /// </summary>
     /// <param name="entity"></param>
@@ -98,6 +116,24 @@ public abstract class BaseService
         var data = await Task.Run(() => _k3Client.Delete(FormID, JsonConvert.SerializeObject(entity)));
         var result = JsonConvert.DeserializeObject<KingDeeResponse>(data);
         return result.Result;
+    }
+
+    /// <summary>
+    /// 根据编码删除单据
+    /// </summary>
+    public Task<ResponseResult> DeleteAsync(List<string> numbers)
+    {
+        var entity = new DeleteRequest { Numbers = numbers };
+        return DeleteAsync(entity);
+    }
+
+    /// <summary>
+    /// 根据内码删除单据
+    /// </summary>
+    public Task<ResponseResult> DeleteAsync(List<int> ids)
+    {
+        var entity = new DeleteRequest { Ids = string.Join(',', ids) };
+        return DeleteAsync(entity);
     }
 
     /// <summary>
@@ -113,6 +149,26 @@ public abstract class BaseService
     }
 
     /// <summary>
+    /// 根据编码提交单据
+    /// </summary>
+    public Task<ResponseResult> SubmitAsync(List<string> numbers)
+    {
+        var entity = new SubmitRequest { Numbers = numbers };
+        return SubmitAsync(entity);
+    }
+
+    /// <summary>
+    /// 根据内码提交单据
+    /// </summary>
+    /// <param name="ids"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> SubmitAsync(List<int> ids)
+    {
+        var entity = new SubmitRequest { Ids = string.Join(',', ids) };
+        return SubmitAsync(entity);
+    }
+
+    /// <summary>
     /// 撤销单据
     /// </summary>
     /// <param name="entity"></param>
@@ -122,6 +178,28 @@ public abstract class BaseService
         var data = await Task.Run(() => _k3Client.CancelAssign(FormID, JsonConvert.SerializeObject(entity)));
         var result = JsonConvert.DeserializeObject<KingDeeResponse>(data);
         return result.Result;
+    }
+
+    /// <summary>
+    /// 根据编码撤销单据
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> CancelAssignAsync(List<string> numbers)
+    {
+        var entity = new SubmitRequest { Numbers = numbers };
+        return CancelAssignAsync(entity);
+    }
+
+    /// <summary>
+    /// 根据内码撤销单据
+    /// </summary>
+    /// <param name="ids"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> CancelAssignAsync(List<int> ids)
+    {
+        var entity = new SubmitRequest { Ids = string.Join(',', ids) };
+        return CancelAssignAsync(entity);
     }
 
     /// <summary>
@@ -137,6 +215,28 @@ public abstract class BaseService
     }
 
     /// <summary>
+    /// 根据编码审核单据
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> AuditAsync(List<string> numbers)
+    {
+        var entity = new AuditRequest { Numbers = numbers };
+        return AuditAsync(entity);
+    }
+
+    /// <summary>
+    /// 根据内码审核单据
+    /// </summary>
+    /// <param name="ids"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> AuditAsync(List<int> ids)
+    {
+        var entity = new AuditRequest { Ids = string.Join(',', ids) };
+        return AuditAsync(entity);
+    }
+
+    /// <summary>
     /// 反审核单据
     /// </summary>
     /// <param name="entity"></param>
@@ -146,6 +246,28 @@ public abstract class BaseService
         var data = await Task.Run(() => _k3Client.UnAudit(FormID, JsonConvert.SerializeObject(entity)));
         var result = JsonConvert.DeserializeObject<KingDeeResponse>(data);
         return result.Result;
+    }
+
+    /// <summary>
+    /// 根据编码反审核单据
+    /// </summary>
+    /// <param name="numbers"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> UnAuditAsync(List<string> numbers)
+    {
+        var entity = new AuditRequest { Numbers = numbers };
+        return UnAuditAsync(entity);
+    }
+
+    /// <summary>
+    ///  根据内码反审核单据
+    /// </summary>
+    /// <param name="ids"></param>
+    /// <returns></returns>
+    public Task<ResponseResult> UnAuditAsync(List<int> ids)
+    {
+        var entity = new AuditRequest { Ids = string.Join(',', ids) };
+        return UnAuditAsync(entity);
     }
 
     /// <summary>
@@ -166,9 +288,15 @@ public abstract class BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> Cancel(RowOperateRequest entity)
+    public Task<ResponseResult> CancelAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("Cancel", entity);
+    }
+
+    public Task<ResponseResult> CancelAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return CancelAsync(entity);
     }
 
     /// <summary>
@@ -176,9 +304,15 @@ public abstract class BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UnCancel(RowOperateRequest entity)
+    public Task<ResponseResult> UnCancelAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UnCancel", entity);
+    }
+
+    public Task<ResponseResult> UnCancelAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UnCancelAsync(entity);
     }
 
     /// <summary>
@@ -214,5 +348,31 @@ public abstract class BaseService
                 GetPublicPropertyNames(property.PropertyType, propertyNames, propertyName);
             }
         }
+    }
+
+    /// <summary>
+    /// 根据成对的主从表id创建行操作请求
+    /// </summary>
+    /// <param name="data"></param>
+    /// <returns></returns>
+    public static RowOperateRequest CreateRowExcute(List<FIDwithEntryID> data)
+    {
+        RowOperateRequest request = new() { Ids = string.Join(",", data.Select(p => p.FID)) };
+        foreach (var item in data)
+        {
+            var PkEntry = request.PkEntryIds.Find(p => p.Id == item.FID.ToString());
+            if (PkEntry == null)
+            {
+                PkEntry = new() { Id = item.FID.ToString() };
+                PkEntry.RowIds.Add(item.FEntryID);
+                request.PkEntryIds.Add(PkEntry);
+            }
+            else
+            {
+                PkEntry.RowIds.Add(item.FEntryID);
+            }
+        }
+
+        return request;
     }
 }

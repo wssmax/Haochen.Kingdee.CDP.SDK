@@ -14,8 +14,8 @@ namespace Haochen.Kingdee.CDP.Services.Tests
         [TestMethod()]
         public async Task BillQueryTest()
         {
-            BillTypeService billTypeService = new BillTypeService();
-            var result = await billTypeService.BillQuery("PRD_MO");
+            var service = new BillTypeService();
+            var result = await service.BillQuery("PRD_MO");
             Assert.IsNotNull(result);
         }
     }

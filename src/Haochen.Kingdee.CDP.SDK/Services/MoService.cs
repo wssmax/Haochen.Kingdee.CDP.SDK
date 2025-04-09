@@ -61,9 +61,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ExcuteToPlanConfirm(RowOperateRequest entity)
+    public Task<ResponseResult> ExcuteToPlanConfirmAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ToPlanConfirm", entity);
+    }
+
+    public Task<ResponseResult> ExcuteToPlanConfirmAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ExcuteToPlanConfirmAsync(entity);
     }
 
     /// <summary>
@@ -71,9 +77,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ExcuteToRelease(RowOperateRequest entity)
+    public Task<ResponseResult> ExcuteToReleaseAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ToRelease", entity);
+    }
+
+    public Task<ResponseResult> ExcuteToReleaseAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ExcuteToReleaseAsync(entity);
     }
 
     /// <summary>
@@ -81,9 +93,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ExcuteToStart(RowOperateRequest entity)
+    public Task<ResponseResult> ExcuteToStartAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ToStart", entity);
+    }
+
+    public Task<ResponseResult> ExcuteToStartAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ExcuteToStartAsync(entity);
     }
 
     /// <summary>
@@ -91,9 +109,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ExcuteToFinish(RowOperateRequest entity)
+    public Task<ResponseResult> ExcuteToFinishAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ToFinish", entity);
+    }
+
+    public Task<ResponseResult> ExcuteToFinishAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ExcuteToFinishAsync(entity);
     }
 
     /// <summary>
@@ -101,9 +125,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ExcuteToClose(RowOperateRequest entity)
+    public Task<ResponseResult> ExcuteToCloseAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ToClose", entity);
+    }
+
+    public Task<ResponseResult> ExcuteToCloseAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ExcuteToCloseAsync(entity);
     }
 
     /// <summary>
@@ -111,9 +141,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UndoToPlan(RowOperateRequest entity)
+    public Task<ResponseResult> UndoToPlanAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UndoToPlan", entity);
+    }
+
+    public Task<ResponseResult> UndoToPlanAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UndoToPlanAsync(entity);
     }
 
     /// <summary>
@@ -121,9 +157,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UndoToPlanConfirm(RowOperateRequest entity)
+    public Task<ResponseResult> UndoToPlanConfirmAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UndoToPlanConfirm", entity);
+    }
+
+    public Task<ResponseResult> UndoToPlanConfirmAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UndoToPlanConfirmAsync(entity);
     }
 
     /// <summary>
@@ -131,9 +173,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UndoToRelease(RowOperateRequest entity)
+    public Task<ResponseResult> UndoToReleaseAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UndoToRelease", entity);
+    }
+
+    public Task<ResponseResult> UndoToReleaseAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UndoToReleaseAsync(entity);
     }
 
     /// <summary>
@@ -141,9 +189,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UndoToStart(RowOperateRequest entity)
+    public Task<ResponseResult> UndoToStartAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UndoToStart", entity);
+    }
+
+    public Task<ResponseResult> UndoToStartAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UndoToStartAsync(entity);
     }
 
     /// <summary>
@@ -151,9 +205,15 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> UndoToFinish(RowOperateRequest entity)
+    public Task<ResponseResult> UndoToFinishAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("UndoToFinish", entity);
+    }
+
+    public Task<ResponseResult> UndoToFinishAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return UndoToFinishAsync(entity);
     }
 
     /// <summary>
@@ -161,8 +221,14 @@ public class MoService : BaseService
     /// </summary>
     /// <param name="entity"></param>
     /// <returns></returns>
-    public Task<ResponseResult> ForceClose(RowOperateRequest entity)
+    public Task<ResponseResult> ForceCloseAsync(RowOperateRequest entity)
     {
         return ExcuteOperationAsync("ForceClose", entity);
+    }
+
+    public Task<ResponseResult> ForceCloseAsync(List<FIDwithEntryID> data)
+    {
+        var entity = CreateRowExcute(data);
+        return ForceCloseAsync(entity);
     }
 }

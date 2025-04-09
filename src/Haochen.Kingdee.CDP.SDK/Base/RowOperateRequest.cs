@@ -16,7 +16,7 @@ public class RowOperateRequest : MultiRequest
     /// 格式：[{"Id":"Id1","EntryIds":"EntryId1,EntryId2,..."}]
     /// (使用分录状态转换时必录)
     /// </summary>
-    public List<IdWithEntryId> PkEntryIds { get; set; } = [];
+    public List<IDWithEntryIDs> PkEntryIds { get; set; } = [];
 
     /// <summary>
     /// 使用组织ID

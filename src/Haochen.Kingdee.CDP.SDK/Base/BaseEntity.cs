@@ -12,6 +12,11 @@ namespace Haochen.Kingdee.CDP.Base;
 /// </summary>
 public class BaseEntity
 {
+    public BaseEntity(string number)
+    {
+        FNumber = number;
+    }
+
     /// <summary>
     /// ID,在api中用不到,在建与数据库关系时需要
     /// </summary>

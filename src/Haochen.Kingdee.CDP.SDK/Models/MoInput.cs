@@ -15,7 +15,7 @@ public class MoInput : KingDeeInput<MoModel> { }
 /// <summary>
 /// 生产订单主表
 /// </summary>
-public class MoModel
+public partial class MoModel
 {
     /// <summary>
     /// 实体主键
@@ -28,19 +28,19 @@ public class MoModel
     public string FBillNo { get; set; }
 
     /// <summary>
-    /// 单据类型 (必填项)
+    /// 单据类型
     /// </summary>
     public BaseEntity FBillType { get; set; }
 
     /// <summary>
-    /// 生产组织 (必填项)
+    /// 生产组织
     /// </summary>
     public BaseEntity FPrdOrgID { get; set; }
 
     /// <summary>
     /// 计划组
     /// </summary>
-    public BaseEntity FWorkGroupId { get; set; }
+    public BaseEntity FWorkGroupID { get; set; }
 
     /// <summary>
     /// 计划员
@@ -48,24 +48,9 @@ public class MoModel
     public BaseEntity FPlannerID { get; set; }
 
     /// <summary>
-    /// 单据日期 (必填项)
+    /// 单据日期
     /// </summary>
     public DateTime? FDate { get; set; }
-
-    /// <summary>
-    /// 计划版本号
-    /// </summary>
-    public string Fjhversion { get; set; }
-
-    /// <summary>
-    /// 跟踪管理模式
-    /// </summary>
-    public string Ftrackmgrmode { get; set; }
-
-    /// <summary>
-    /// 来自跳层
-    /// </summary>
-    public int Fisfromskip { get; set; }
 
     /// <summary>
     /// 明细列表
@@ -75,36 +60,36 @@ public class MoModel
     /// <summary>
     /// 备注
     /// </summary>
-    public string FDescription { get; set; }
+    public string FDescription { get; set; } = "api创建";
 }
 
 /// <summary>
 /// 生产订单明细
 /// </summary>
-public class MoEntry
+public partial class MoEntry
 {
     /// <summary>
     /// 实体主键
     /// </summary>
-    public int FEntryId { get; set; }
+    public int FEntryID { get; set; }
 
     /// <summary>
-    /// 物料编码 (必填项)
+    /// 物料编码
     /// </summary>
-    public BaseEntity FMaterialId { get; set; }
+    public BaseEntity FMaterialID { get; set; }
 
     /// <summary>
     /// 数量
     /// </summary>
-    public decimal FQty { get; set; }
+    public double FQty { get; set; }
 
     /// <summary>
-    /// 计划开工时间 (必填项)
+    /// 计划开工时间
     /// </summary>
     public DateTime FPlanStartDate { get; set; }
 
     /// <summary>
-    /// 计划完工时间 (必填项)
+    /// 计划完工时间
     /// </summary>
     public DateTime FPlanFinishDate { get; set; }
 
@@ -114,14 +99,9 @@ public class MoEntry
     public BaseEntity FLot { get; set; }
 
     /// <summary>
-    /// 项目编号
-    /// </summary>
-    public BaseEntity FProjectID { get; set; }
-
-    /// <summary>
     /// BOM版本
     /// </summary>
-    public BaseEntity FBomId { get; set; }
+    public BaseEntity FBomID { get; set; }
 
     /// <summary>
     /// 生产车间
