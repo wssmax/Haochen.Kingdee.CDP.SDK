@@ -12,7 +12,7 @@ public class TransferDirectInput : KingDeeInput<TransferDirectModel> { }
 /// <summary>
 /// 直接调拨单
 /// </summary>
-public class TransferDirectModel
+public partial class TransferDirectModel
 {
     /// <summary>
     /// 实体主键
@@ -48,7 +48,7 @@ public class TransferDirectModel
 /// <summary>
 /// 单据分录
 /// </summary>
-public class TransferDirectEntry
+public partial class TransferDirectEntry
 {
     /// <summary>
     /// 分录ID
