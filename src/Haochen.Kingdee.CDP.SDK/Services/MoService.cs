@@ -48,7 +48,7 @@ public class MoService : BaseService
     }
 
     /// <summary>
-    /// 创建和修改采购申请单
+    /// 创建和修改生产订单变更
     /// </summary>
     /// <param name="entity"></param>
     public Task<ResponseResult> SaveAsync(MoInput entity)

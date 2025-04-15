@@ -31,9 +31,6 @@ public partial class PickMtrlModal
 /// <summary>
 /// 生产领料单明细
 /// </summary>
-/// <summary>
-/// 生产领料单明细
-/// </summary>
 public partial class PickMtrlEntry
 {
     /// <summary>
